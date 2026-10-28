@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Creatine Tracker & Reminder</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Take Creatine">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Take Creatine</h1>
+        <p>Set a reminder below...</p>
+
+        <button id="enableNotifications" type="button">🔔 Enable Phone/Browser Notifications</button>
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+
+        <form id="reminderForm">
+            <div class="form-group">
+                <label>Reminder Days</label>
+                <div id="daySelector">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="1" checked>
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Mon</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="2" checked>
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Tue</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="3" checked>
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Wed</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="4" checked>
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Thu</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="5" checked>
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Fri</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="6">
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Sat</span>
+                    </label>
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="days" value="0">
+                        <span class="custom-checkbox"></span>
+                        <span class="day-label">Sun</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dosage">Dosage (grams)</label>
+                <input type="number" id="dosage" name="dosage" min="1" max="50" value="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reminderTime">Reminder Time</label>
+                <input type="time" id="reminderTime" name="reminderTime" value="09:00" required>
+            </div>
+
+            <button type="submit">Save & Activate Reminder</button>
+        </form>
+
+        <button id="logIntake" type="button">💪 Log Intake Right Now</button>
+
+        <hr>
+
+        <div class="history-header">
+            <h3>Recent History</h3>
+            <button id="clearAllLogs" type="button" class="clear-all-btn">Clear All</button>
+        </div>
+        
+        <table id="allEntries">
+            <thead>
+                <tr>
+                    <th>Dosage</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="historyBody">
+                <!-- Dynamically populated entries -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Native Confirmation Modal Container -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <h4>Clear Intake History?</h4>
+            <p>This action cannot be undone. Are you sure you want to delete all logged intakes?</p>
+            <div class="modal-actions">
+                <button id="cancelClearBtn" class="modal-btn btn-secondary">Cancel</button>
+                <button id="confirmClearBtn" class="modal-btn btn-danger">Delete All</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

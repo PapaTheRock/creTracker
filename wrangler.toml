@@ -1,0 +1,19 @@
+name = "creatine-reminder"
+main = "src/worker.js"
+compatibility_date = "2025-01-01"
+
+# Static site (index.html, app.js, sw.js ...). Only /api/* runs the Worker code.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+# Runs every minute and sends any reminders that are due (free plan allows this).
+[triggers]
+crons = ["* * * * *"]
+
+# Run: npx wrangler d1 create creatine-db   -> paste the database_id it prints below
+[[d1_databases]]
+binding = "DB"
+database_name = "creatine-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"

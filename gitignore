@@ -1,0 +1,19 @@
+# Wrangler local state and logs (logs contain your Cloudflare account ID)
+.wrangler/
+*.log
+
+# Local secret files
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+
+# Any file that holds VAPID keys
+vapid*.txt
+vapid*.json
+*.pem
+
+# Node and OS junk
+node_modules/
+.DS_Store
+Thumbs.db
